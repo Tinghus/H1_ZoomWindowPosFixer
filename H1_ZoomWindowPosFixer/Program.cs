@@ -54,6 +54,7 @@ namespace H1_ZoomWindowPosFixer
                         break;
 
                     case ConsoleKey.T:
+                        Console.WriteLine();
                         Console.WriteLine("Titles");
                         GetWindowTitles();
                         break;
@@ -78,11 +79,16 @@ namespace H1_ZoomWindowPosFixer
                     IntPtr hwnd = process.MainWindowHandle;
                     if (hwnd != IntPtr.Zero)
                     {
-                        Console.Write("Press any key to get back to the menu");
-                        Console.ReadKey();
+                        Console.WriteLine(process.MainWindowTitle);
                     }
                 }
             }
+
+            Console.WriteLine();
+            Console.Write("Press any key to get back to the menu");
+            Console.ReadKey();
+            Console.Clear();
+
         }
 
         static void CreateWhitelist()
@@ -122,7 +128,6 @@ namespace H1_ZoomWindowPosFixer
                         }
 
                         RECT rect = new RECT();
-                        GetWindowRect(hwnd, ref rect);
                         GetWindowRect(hwnd, ref rect);
                         savedWindowPositions.Add(new Tuple<IntPtr, RECT>(hwnd, rect));
                     }
